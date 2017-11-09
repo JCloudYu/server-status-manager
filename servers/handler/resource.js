@@ -43,7 +43,7 @@
 		
 		}
 		catch(e) {
-			control.next = require( 'handlers/json' );
+			control.next = require( 'servers/json' );
 			
 			return {
 				scope: "global",
