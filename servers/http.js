@@ -63,7 +63,6 @@
 					dispatcher
 					.trigger(Object.imprintProperties({},{remainder:remainder, request:req, response:res}))
 					.then(()=>{
-						console.log( "in" );
 						if (!res.finished) {
 							res.end();
 						}
