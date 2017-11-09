@@ -21,13 +21,10 @@ $ npm run entry_sample
 ```
 
 ## How to use
-* Update   
-POST localhost:8080   
-(Header set: "Authorization: bearer [token string]")
+* Update:   
+Headers set: "Authorization: bearer [token-string]"   
+and **POST** localhost:8080
 
-* Fetch  
-GET localhost:8080   
-(Header set: "Authorization: bearer [token string]")
-
-
-<style>*{text-align:justify;}body{font-size:16px;}pre{tab-size:4;}.note{font-size:0.8em;}.bold{font-weight:bold;}.italic{font-style:italic;}</style>
+* Fetch:  
+Headers set: "Authorization: bearer [token-string]"   
+and **GET** localhost:8080
