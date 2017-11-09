@@ -30,7 +30,7 @@
 			]);
 		})
 		.then(()=>{
-			res.writeHead(200);
+			res.writeHead(200, { 'Content-Type':'application/json' });
 			res.write(JSON.stringify({
 				scope: "global"
 			}));
