@@ -35,7 +35,8 @@
 				{
 					type:'access-ticket',
 					exp: moment().unix() + duration
-				}
+				},
+				jwt.Base64Url.decode(config.conf.secret)
 			);
 		},
 		'update-ticket': (options)=>{
@@ -51,13 +52,15 @@
 					type: 'update-ticket',
 					exp: moment().unix() + duration,
 					identity: identity
-				}
+				},
+				jwt.Base64Url.decode(config.conf.secret)
 			);
 		}
 	};
 	const __exposedAPI = Object.imprintProperties({}, {
-		genSecret:()=>{
-			return jwt.Base64Url.encode(crypto.randomBytes(128));
+		genSecret:(size=128)=>{
+			if ( size < 64 ) size = 64; else if ( size > 512 ) size = 512;
+			return jwt.Base64Url.encode(crypto.randomBytes(size));
 		},
 		genToken:(type='update-ticket', options={})=>{
 			let generator = ACCESS_TOKEN_GENERATOR[type];
