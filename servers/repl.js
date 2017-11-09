@@ -5,6 +5,7 @@
 	const repl		 = require( 'repl' );
 	const config	 = require( 'json-cfg' ).trunk;
 	const EvtEmitter = require( 'events' );
+	config.conf.http = config.conf.http || {};
 	
 	
 	
@@ -12,6 +13,10 @@
 	let __replServer = net.createServer();
 	const __exports  = module.exports = {
 		init:()=>{
+			if (!config.conf.repl.enabled) {
+				return;
+			}
+			
 			return new Promise((fulfill, reject)=>{
 				__replServer.on('connection', (socket)=>{
 					const session = repl.start({
@@ -33,6 +38,10 @@
 			__evtPool.removeAllListeners(); __evtPool = null;
 		},
 		serve: ()=>{
+			if (!config.conf.repl.enabled) {
+				return;
+			}
+			
 			return new Promise((fulfill, reject)=>{
 				try {
 					let conf = config.conf.repl || {};

@@ -5,6 +5,7 @@
 	const http		 = require( 'http' );
 	const pitaya	 = require( 'pitayajs' );
 	const EvtEmitter = require( 'events' );
+	config.conf.http = config.conf.http || {};
 	
 	
 	
@@ -22,6 +23,10 @@
 	let __httpServer = http.createServer();
 	const __exports	 = module.exports = {
 		init:()=>{
+			if (!config.conf.http.enabled) {
+				return;
+			}
+		
 			return new Promise((fulfill, reject)=>{
 				// Start http server processing logic
 				__httpServer.on( 'request', (req, res)=>{
@@ -51,6 +56,10 @@
 			__evtPool.removeAllListeners(); __evtPool = null;
 		},
 		serve:()=>{
+			if (!config.conf.http.enabled) {
+				return;
+			}
+			
 			return new Promise((fulfill, reject)=>{
 				try {
 					let conf = config.conf.http || {};
