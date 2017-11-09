@@ -5,7 +5,6 @@
 	const http		 = require( 'http' );
 	const url		 = require( 'url' );
 	const pitaya	 = require( 'pitayajs' );
-	const EvtEmitter = require( 'events' );
 	config.conf.http = config.conf.http || {};
 	
 	const __handlers = {
@@ -24,7 +23,6 @@
 		]})
 	};
 
-	let __evtPool	 = new EvtEmitter();
 	let __httpServer = http.createServer();
 	const __exports	 = module.exports = {
 		init:()=>{
@@ -107,10 +105,6 @@
 					reject(err);
 				}
 			});
-		},
-		on:(...args)=>{
-			__evtPool.on(...args);
-			return __exports;
 		}
 	};
 })();
