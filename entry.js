@@ -12,7 +12,6 @@
 	require( 'tiinytiny' ).register();
 	const config = require( 'json-cfg' ).trunk;
 	const http	 = require( 'servers/http' );
-	const repl	 = require( 'servers/repl' );
 	const db	 = require( 'lib/mongo' );
 	
 	const argv = process.argv.slice( 2 );
@@ -34,6 +33,7 @@
 	};
 
 
+
 	// create runtime config
 	Object.imprintProperties(config.conf, {
 		paths:{
@@ -41,19 +41,14 @@
 		}
 	}, [false,true,true]);
 
-	Promise.wait([ db.init() ])
-	.then(()=>{return Promise.wait([
-		http.init(), repl.init()
-	])})
-	.then(()=>{return Promise.wait([
-		http.serve(), repl.serve()
-	])})
+
+
+	db.init()
 	.then(()=>{
-		repl.on( 'close', ()=>{
-			db.inst.close();
-			http.cleanup();
-			repl.cleanup();
-		});
+		return http.init()
+	})
+	.then(()=>{
+		return http.serve();
 	})
 	.catch((err)=>{
 		console.log(err);

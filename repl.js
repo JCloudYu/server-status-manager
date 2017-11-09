@@ -11,6 +11,12 @@
 	
 	let __evtPool	 = new EvtEmitter();
 	let __replServer = net.createServer();
+	let __exposedAPI = Object.imprintProperties({}, {
+		genToken:(identity, duration=31536000)=>{
+			
+		}
+	});
+	
 	const __exports  = module.exports = {
 		init:()=>{
 			if (!config.conf.repl.enabled) {
@@ -23,7 +29,9 @@
 						prompt: `${socket.remoteAddress}> `,
 						input: socket,
 						output: socket
-					}).on('exit', () => {
+					});
+					
+					session.on('exit', () => {
 						socket.end();
 					});
 				});
