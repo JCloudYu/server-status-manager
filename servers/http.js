@@ -69,8 +69,18 @@
 					})
 					.catch(()=>{
 						if (!res.finished) {
-							res.writeHead( 500, { 'Content-Type': 'text/plain' });
-							res.write( "Unexpected error has occurred!" );
+							res.writeHead( 500, { 'Content-Type': 'application/json' });
+							res.write({
+								scope: "global",
+								error: {
+									code: 500,
+									message: "Unexpected error has occurred!",
+									errors:[{
+										reason: "unexpected_error",
+										message: "Unexpected error has occurred!"
+									}]
+								}
+							});
 							res.end();
 						}
 					});

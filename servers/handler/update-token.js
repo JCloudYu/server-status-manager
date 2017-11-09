@@ -14,6 +14,17 @@
 		accToken = JWT.parse(accToken||'');
 		if ( type !== 'bearer' || !accToken || (accToken.header.alg !== 'HS256') ) {
 			res.writeHead(401);
+			res.write({
+				scope: "global",
+				error: {
+					code: 401,
+					message: "You're providing invalid access token!",
+					errors:[{
+						reason: "invalid_access_token",
+						message: "You're providing invalid access token!"
+					}]
+				}
+			});
 			control.stop = true;
 			return;
 		}
@@ -21,6 +32,17 @@
 		let payload = accToken.payload;
 		if ( payload.type !== 'update-ticket' || payload.exp <= moment().unix() || !payload.identity ) {
 			res.writeHead(401);
+			res.write({
+				scope: "global",
+				error: {
+					code: 401,
+					message: "You're providing invalid access token!",
+					errors:[{
+						reason: "invalid_access_token",
+						message: "You're providing invalid access token!"
+					}]
+				}
+			});
 			control.stop = true;
 			return;
 		}
@@ -31,6 +53,17 @@
 		let verified = JWT.verify(alg, content, signature, secret);
 		if ( !verified ) {
 			res.writeHead(401);
+			res.write({
+				scope: "global",
+				error: {
+					code: 401,
+					message: "You're providing invalid access token!",
+					errors:[{
+						reason: "invalid_access_token",
+						message: "You're providing invalid access token!"
+					}]
+				}
+			});
 			control.stop = true;
 			return;
 		}
