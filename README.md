@@ -27,11 +27,11 @@ $ npm run entry_sample
 ## How to use
 * Update:   
 1. Headers set:  
-    (1) Authorization = "bearer \<token-string\>"   
+    (1) Authorization = "bearer \<token-jwt-string\>"   
     (2) Content-Type = "application/json"
 2. Body set your json content (use row)
 3. **POST** localhost:8080
 
 * Fetch:  
-1. Headers set: Authorization = "bearer \<token-string\>"   
+1. Headers set: Authorization = "bearer \<token-jwt-string\>"   
 2. **GET** localhost:8080
