@@ -4,6 +4,7 @@
   "description": "The tiny server package that allows developers to collect multiple server information passively and dhsipath the statuses in a dashboard",
   "main": "entry.js",
   "scripts": {
+    "entry": "node entry.js --conf config.json",
     "entry_sample": "node entry.js --conf config.sample.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

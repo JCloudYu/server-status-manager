@@ -8,5 +8,7 @@
 		"remote": "http://127.0.0.1:8080",
 		"identity": "test",
 		"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoidXBkYXRlLXRpY2tldCIsImlkZW50aXR5IjoibWFnZ2llIiwiZXhwIjoxOTIwMzcwMDgxfQ.CWlhBxYkUCQW0a41IcY-bz1yxIil6NlNc1Jv9ed-jMU"
-	}
+	},
+
+	"server": ["apple", "banana", "coconut"]
 }

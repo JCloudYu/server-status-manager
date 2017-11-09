@@ -15,6 +15,10 @@ $ npm install
 ```bash
 $ node entry --conf <config-json-file-name>
 ```
+* Run project (for config.json):
+```bash
+$ npm run entry
+```
 * Run project for sample:
 ```bash
 $ npm run entry_sample
@@ -22,9 +26,12 @@ $ npm run entry_sample
 
 ## How to use
 * Update:   
-Headers set: Authorization = "bearer \<token-string\>"   
-and **POST** localhost:8080
+1. Headers set:  
+    (1) Authorization = "bearer \<token-string\>"   
+    (2) Content-Type = "application/json"
+2. Body set your json content (use row)
+3. **POST** localhost:8080
 
 * Fetch:  
-Headers set: Authorization = "bearer \<token-string\>"   
-and **GET** localhost:8080
+1. Headers set: Authorization = "bearer \<token-string\>"   
+2. **GET** localhost:8080
