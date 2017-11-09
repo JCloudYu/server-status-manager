@@ -31,13 +31,13 @@
 		})
 		.then(()=>{
 			res.writeHead(200);
-			res.write({
+			res.write(JSON.stringify({
 				scope: "global"
-			});
+			}));
 		})
 		.catch(()=>{
 			res.writeHead(400, { 'Content-Type':'application/json' });
-			res.write({
+			res.write(JSON.stringify({
 				scope: "global",
 				error: {
 					code: 400,
@@ -47,7 +47,7 @@
 						message: "Invalid state data!"
 					}]
 				}
-			});
+			}));
 		});
 	};
 	

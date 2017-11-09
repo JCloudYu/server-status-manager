@@ -13,8 +13,8 @@
 		
 		accToken = JWT.parse(accToken||'');
 		if ( type !== 'bearer' || !accToken || (accToken.header.alg !== 'HS256') ) {
-			res.writeHead(401);
-			res.write({
+			res.writeHead(401, {'Content-Type':'application/json'});
+			res.write(JSON.stringify({
 				scope: "global",
 				error: {
 					code: 401,
@@ -24,15 +24,15 @@
 						message: "You're providing invalid access token!"
 					}]
 				}
-			});
+			}));
 			control.stop = true;
 			return;
 		}
 		
 		let payload = accToken.payload;
 		if ( payload.type !== 'update-ticket' || payload.exp <= moment().unix() || !payload.identity ) {
-			res.writeHead(401);
-			res.write({
+			res.writeHead(401, {'Content-Type':'application/json'});
+			res.write(JSON.stringify({
 				scope: "global",
 				error: {
 					code: 401,
@@ -42,7 +42,7 @@
 						message: "You're providing invalid access token!"
 					}]
 				}
-			});
+			}));
 			control.stop = true;
 			return;
 		}
@@ -52,8 +52,8 @@
 		let secret = conf.secret ? JWT.Base64Url.decode(conf.secret) : crypto.randomBytes(64);
 		let verified = JWT.verify(alg, content, signature, secret);
 		if ( !verified ) {
-			res.writeHead(401);
-			res.write({
+			res.writeHead(401, {'Content-Type':'application/json'});
+			res.write(JSON.stringify({
 				scope: "global",
 				error: {
 					code: 401,
@@ -63,7 +63,7 @@
 						message: "You're providing invalid access token!"
 					}]
 				}
-			});
+			}));
 			control.stop = true;
 			return;
 		}

@@ -63,6 +63,7 @@
 					dispatcher
 					.trigger(Object.imprintProperties({},{remainder:remainder, request:req, response:res}))
 					.then(()=>{
+						console.log( "in" );
 						if (!res.finished) {
 							res.end();
 						}
@@ -70,7 +71,7 @@
 					.catch(()=>{
 						if (!res.finished) {
 							res.writeHead( 500, { 'Content-Type': 'application/json' });
-							res.write({
+							res.write(JSON.stringify({
 								scope: "global",
 								error: {
 									code: 500,
@@ -80,7 +81,7 @@
 										message: "Unexpected error has occurred!"
 									}]
 								}
-							});
+							}));
 							res.end();
 						}
 					});
