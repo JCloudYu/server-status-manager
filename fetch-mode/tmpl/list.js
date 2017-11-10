@@ -1,9 +1,11 @@
+const block = require('list_child');
+
 module.exports = function(params=[]){
     return `
-<ul>
+<ul class='server'>
     ${params.map(val => 
         `<li>
-            <h5 class='title' title=${val.title}>${val.title}</h5>
+            ${block(val)}
         </li>`
     ).join('')}
 </ul>

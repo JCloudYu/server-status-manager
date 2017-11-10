@@ -1,15 +1,52 @@
 (()=>{
 	"use strict";
 
-	const layout = require('layout');
-    const body = require('body');
-	const list = require('list');
+	const http	 = require('http');
+	const fs	 = require('fs');
+	const mongo	 = require('lib/mongo');
 
-	function __GET_INFO() {
+	const config = require('json-cfg').trunk;
+	const threshold = config.conf.threshold;
+
+	const layout = require('layout');
+    const body	 = require('body');
+	const list	 = require('list');
+
+	const __basePath = global.__basePath || `${__dirname}/../..`;
+
+	function __GET_SERVERS_INFO() {
 
 		return new Promise((fulfill, reject)=>{
-			fulfill([]);
+
+			let findQuery = {};
+			mongo.inst
+			.collection('latest')
+			.find(findQuery)		
+			.sort({init: -1})
+			.skip(0)
+			.limit(0)
+			.toArray()
+			.then((value)=>{
+				fulfill(value);
+			})
+			.catch(reject);
 		});
+	}
+
+	function __PURGE_INFO(infos) {
+
+		let listData = [];
+		infos.forEach(info => {
+			listData.push({
+				'identity': info.identity,
+				'time': info.time,
+				'cpu': info.state.cpu,
+				'mem': info.state.mem,
+				'disk': info.state.disk
+			});
+		});
+
+		return Promise.resolve(listData);
 	}
 
 	function __WRITE_RESPONSE(res, data) {
@@ -33,7 +70,8 @@
 	
 		const {request:req, response:res} = control.env;
 
-		return __GET_INFO()
+		return __GET_SERVERS_INFO()
+		.then(__PURGE_INFO)
 		.then((value)=>{
 			__WRITE_RESPONSE(res, value);
 		});

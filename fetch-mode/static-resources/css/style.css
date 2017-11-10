@@ -1,3 +1,18 @@
 ul {
     list-style-type: none;
 }
+
+.server > li {
+    float: left;
+    width: 20%;
+    height: 250px;
+    border: 1px solid black;
+}
+
+.block {
+    padding: 10px;
+}
+
+.block .out {
+    color: #f00;
+}
