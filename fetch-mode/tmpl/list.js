@@ -1,13 +1,16 @@
-const block = require('list_child');
+const content = require('list_child');
 
 module.exports = function(params=[]){
     return `
-<ul class='server'>
+<div class='server wrap'>
     ${params.map(val => 
-        `<li>
-            ${block(val)}
-        </li>`
+        `<div class='wrap-child'>
+            <div class='block'>
+                <div class='title'>${val.identity}</div>
+                <div class='content'>${content(val)}</div>
+            </div>
+        </div>`
     ).join('')}
-</ul>
+</div>
 `;
 };
