@@ -87,7 +87,6 @@
 			if ( !__httpServer ) return;
 			
 			__httpServer.close(); __httpServer = null;
-			__evtPool.removeAllListeners(); __evtPool = null;
 		},
 		serve:()=>{
 			return new Promise((fulfill, reject)=>{
