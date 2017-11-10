@@ -28,14 +28,14 @@ body {
 
 .wrap > .wrap-child {
     width: 20%;
-    height: 300px;
+    height: 320px;
     border: 1px solid black;
     overflow-y: auto;
 }
 
 .block {
     line-height: 1.75rem;
-    padding: 5px 15px;
+    padding: 10px 15px;
 }
 
 .block > .title {
@@ -50,6 +50,7 @@ body {
 }
 
 .time {
+    line-height: 2rem;
     color: #0000ff;
     font-weight: bold;
 }

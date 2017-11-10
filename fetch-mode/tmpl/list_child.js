@@ -16,7 +16,7 @@ function bytesToSize(bytes) {
 module.exports = function(params={}){
 
     // time
-    let time = moment.unix(params.time).format('YYYY/M/D, kk:mm:ss'),
+    let time = moment.unix(params.time).format('YYYY/M/D ddd kk:mm:ss'),
         timeClass = (moment(now).diff(params.time) >= threshold.timeSec) ? 'out' : '';
 
     // cpu
