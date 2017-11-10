@@ -11,7 +11,7 @@ $ npm install
 ```
 
 ## Build and Run
-* Run project:
+* Run project (for your own config json file):
 ```bash
 $ node entry --conf <config-json-file-name>
 ```
