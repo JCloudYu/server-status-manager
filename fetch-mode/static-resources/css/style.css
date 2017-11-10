@@ -50,6 +50,10 @@ body {
 }
 
 .time {
-    color: #b6b9cf;
+    color: #0000ff;
     font-weight: bold;
+}
+
+.disks > .content {
+    margin-left: 10px;
 }

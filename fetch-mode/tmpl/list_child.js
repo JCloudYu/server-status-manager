@@ -34,6 +34,7 @@ module.exports = function(params={}){
     Object.keys(params.disk).sort().map(function(objKey, idx) {
         let {usage: val} = params.disk[objKey];
         diskList.push({
+            'no': idx + 1,
             'title': objKey,
             'used': bytesToSize(val.used),
             'total': bytesToSize(val.total),
@@ -47,19 +48,19 @@ module.exports = function(params={}){
     <div class='center ${timeClass}'>${time}</div>
 </div>
 <div class='cpu wrap'>
-    <div class='title left'>CPU Cnt:</div>
+    <div class='title left'>* CPU Cnt:</div>
     <div class='content center'>${cpuCount}</div>
 </div>
 <div class='mem wrap ${memClass}'>
-    <div class='title left'>Memory:</div>
+    <div class='title left'>* Memory:</div>
     <div class='content right'>${memUsed} / ${memTotal} (${memPercent}%)</div>
 </div>
 <div class='disks'>
-    <div class='title'>Disks:</div>
+    <div class='title'>* Disks:</div>
     <div class='content'>${
         diskList.map(disk => 
             `<div class='disk wrap ${disk.class}'>
-                <div class='title left'>${disk.title}:</div>
+                <div class='title left'>(${disk.no}) ${disk.title}:</div>
                 <div class='content right'>${disk.used} / ${disk.total} (${disk.percent}%)</div>
             </div>`
         ).join('')
