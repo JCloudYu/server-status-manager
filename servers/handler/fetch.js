@@ -74,6 +74,7 @@
 		.then(__PURGE_INFO)
 		.then((value)=>{
 			__WRITE_RESPONSE(res, value);
-		});
+		})
+		.catch((err)=>{console.log(err);});
 	};
 })();

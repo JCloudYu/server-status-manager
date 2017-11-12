@@ -14,7 +14,7 @@
 				require( './handler/update' )
 			]}),
 			'fetch': pitaya.chain({handler:[
-				require( './handler/update-token' ),
+				require( './handler/fetch-token' ),
 				require( './handler/fetch' )
 			]})
 		},
@@ -93,7 +93,7 @@
 				try {
 					let conf = config.conf.http || {};
 					let port = conf.port || 8080;
-					let host = conf.port || 'localhost';
+					let host = conf.host || 'localhost';
 					STDOUT( `Start accepting http request on ${host.toString().yellow}:${port.toString().yellow} => ` );
 					__httpServer.listen(port, host);
 					STDOUT( "Success".green, true );
