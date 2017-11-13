@@ -1,6 +1,6 @@
 const moment = require('moment');
 const config = require( 'json-cfg' ).trunk;
-const threshold = config.conf.threshold;
+const threshold = config.conf.threshold || {"timeSec": 300, "memPercent": 70, "diskPercent": 70};
 
 const now = moment().unix();
 

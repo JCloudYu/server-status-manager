@@ -5,9 +5,6 @@
 	const fs	 = require('fs');
 	const mongo	 = require('lib/mongo');
 
-	const config = require('json-cfg').trunk;
-	const threshold = config.conf.threshold;
-
 	const layout = require('layout');
     const body	 = require('body');
 	const list	 = require('list');
