@@ -19,39 +19,38 @@ body {
     margin: 0 auto;
 }
 
-.wrap {
+.card-deck {
     width: 100%;
     display: inline-flex;
-    flex-wrap: wrap;
-    vertical-align: top;
 }
 
-.wrap > .wrap-child {
-    width: 20%;
-    height: 320px;
-    border: 1px solid black;
+.card-container {
+    max-width: 20%;
+}
+
+.card {
+    line-height: 1.75rem;
     overflow-y: auto;
 }
 
-.block {
-    line-height: 1.75rem;
-    padding: 10px 15px;
+.card-body {
+    padding: 1rem;
 }
 
-.block > .title {
+.card-title {
     font-size: 2rem;
-    line-height: 2.5rem;
+    line-height: 2rem;
     font-weight: bold;
     text-align: center;
 }
 
-.block .wrap {
-    justify-content: flex-end;
+.card-text-row {
+    width: 100%;
+    display: inline-flex;
 }
 
 .time {
     line-height: 2rem;
-    color: #0000ff;
     font-weight: bold;
 }
 

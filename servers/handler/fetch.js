@@ -54,6 +54,7 @@
 				'./res/js/index.js'
 			],
 			css: [
+				'./res/css/bootstrap.min.css',
 				'./res/css/style.css'
 			],
 			body: body([
