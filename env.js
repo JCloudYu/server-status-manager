@@ -14,10 +14,28 @@
 	
 	
 	// Register environmentally global APIs
+	/**
+	 * Output data to stderr
+	 * @function STDERR
+	 * @param {...} data The data to be printed
+	 * @memberOf global
+	 */
+	
+	/**
+	 * Output data to stdout
+	 * @function STDOUT
+	 * @param {...} data The data to be printed
+	 * @memberOf global
+	 */
 	[ 'STDOUT', 'STDERR' ].forEach((name)=>{
 		global[name] = __OUTPUT_STREAM.bind(null, process[name.toLowerCase()]);
 	});
 	
+	/**
+	 * Output data using colored and pretty printed format
+	 * @param {...} args The data to be printed
+	 * @memberOf console
+	 */
 	console.inspect = (...args)=>{
 		args.forEach((arg)=>{
 			STDOUT(util.inspect(arg, {colors:true, depth:20}))
@@ -55,7 +73,7 @@
 		env.conf = `${projRoot}/config.default.json`;
 	}
 	
-	STDOUT( `${'Loading config file'.green} \`${env.conf.yellow}\` ${'...'.green}` );
+	STDOUT( `${'Loading config file'.green} [${env.conf.yellow}] ${'...'.green}` );
 	config.load( env.conf );
 
 

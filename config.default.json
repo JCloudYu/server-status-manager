@@ -9,12 +9,13 @@
 	"dbURI": "mongodb://127.0.0.1:27017/r_states",
 	"secret": "L_VoSMQReWqW9zYsyudWT1AZkt2-RQGQIoEqGWcaVgb8l6X25BmSBCMkMh60ERk0nbNg6MQ3OvD4M4h9oqVw3g",
 
+
+
 	"update": {
 		"remote": "http://127.0.0.1:8080",
 		"identity": "test",
 		"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoidXBkYXRlLXRpY2tldCIsImlkZW50aXR5IjoibWFnZ2llIiwiZXhwIjoxOTIwMzcwMDgxfQ.CWlhBxYkUCQW0a41IcY-bz1yxIil6NlNc1Jv9ed-jMU"
 	},
-	
 	"threshold": {
 		"timeSec": 300,
 		"memPercent": 70,

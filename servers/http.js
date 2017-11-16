@@ -42,7 +42,7 @@
 	};
 
 	let __httpServer = http.createServer();
-	const __exports	 = module.exports = {
+	module.exports = {
 		init:()=>{
 			return new Promise((fulfill, reject)=>{
 				// Start http server processing logic
@@ -114,7 +114,7 @@
 					let conf = config.conf.http || {};
 					let port = conf.port || 8080;
 					let host = conf.host || 'localhost';
-					STDOUT( `Start accepting http request on ${host.toString().yellow}:${port.toString().yellow} => ` );
+					STDOUT( `${'Start accepting http request on'.green} [${host.toString().yellow}:${port.toString().yellow}]${'...'.green} `, false );
 					__httpServer.listen(port, host);
 					STDOUT( "Success".green, true );
 					fulfill();
