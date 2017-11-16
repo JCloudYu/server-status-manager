@@ -6,7 +6,7 @@
 	appModulePath.addPath( `${__dirname}` );
 	
 	// Initialize execution environment
-	require( './env' );
+	require( './lib/env' );
 
 	
 	
