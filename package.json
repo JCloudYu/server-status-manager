@@ -29,7 +29,7 @@
 		"lib-jwt": "^0.1.4",
 		"moment": "^2.19.2",
 		"mongodb": "^2.2.33",
-		"pitayajs": "^1.2.5",
+		"pitayajs": "^1.2.6",
 		"python-shell": "^0.4.0",
 		"repl.history": "^0.1.4",
 		"tiinytiny": "^0.1.4"
