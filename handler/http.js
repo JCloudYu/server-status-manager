@@ -20,26 +20,7 @@
 		ERROR404: require( './error/404' ),
 		ERROR500: require( './error/500' ),
 	};
-	/*
-	const ___handlers = {
-		GET:{
-			'/': pitaya.chain({handler:[
-				require( './handler/fetch-token' ),
-				require( './handler/fetch' )
-			]}),
-			'/resource': pitaya.chain({
-				handler:[ require( 'pitayajs/helper/http/file-req-handler' ) ],
-				
-			})
-		},
-		POST: {
-			'/': pitaya.chain({handler:[
-				require( './handler/update-token' ),
-				require( './handler/update' )
-			]})
-		}
-	};
-	*/
+
 	let __httpServer = http.createServer();
 	module.exports = {
 		init:()=>{

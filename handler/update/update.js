@@ -4,12 +4,13 @@
 	const mongo	 = require( 'lib/mongo' );
 	const moment = require( 'moment' );
 	const MAX_PAYLOAD = 2 * 1024 * 1024;
+	const pitaya = require( 'pitayajs' );
 	
 	let update = module.exports = (control, result=null)=>{
 		let {request:req, response:res} = control.env;
 		let {session} = control;
 		
-		return __COLLECT_DATA(req)
+		return pitaya.net.StreamReadAll(req, MAX_PAYLOAD)
 		.then((data)=>{
 			let json = JSON.parse(data.toString( 'utf8' ));
 			let history = mongo.inst.collection( 'history' );
@@ -50,25 +51,4 @@
 			}));
 		});
 	};
-	
-	function __COLLECT_DATA(req) {
-		return new Promise((fulfill ,reject)=>{
-			let chunks = [], size = 0;
-			req.on( 'data', (chunk)=>{
-				size += chunk.length;
-				if ( size >= MAX_PAYLOAD ) {
-					req.destroy();
-					return;
-				}
-				
-				chunks.push(chunk);
-			});
-			
-			req.on( 'end', ()=>{
-				fulfill(Buffer.concat(chunks));
-			});
-			
-			req.on('error', reject);
-		});
-	}
 })();

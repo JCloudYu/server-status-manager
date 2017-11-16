@@ -5,11 +5,12 @@
 	const moment = require( 'moment' );
 	const conf	 = require( 'json-cfg' ).trunk.conf;
 	const crypto = require( 'crypto' );
-	const {DrainData} = require( 'lib/data-proc' );
+	const {StreamDrain:DrainData} = require( 'pitayajs' ).net;
 	
-	let updateTokenHandler = module.exports = (control, result=null)=>{
+	module.exports = (control, chainData=null)=>{
 		const {request:req, response:res} = control.env;
 		let [type, accToken] = (req.headers.authorization || '').split( ' ' );
+		
 		
 		
 		accToken = JWT.parse(accToken||'');
@@ -32,6 +33,8 @@
 			});
 		}
 		
+		
+		
 		let payload = accToken.payload;
 		if ( payload.type !== 'update-ticket' || payload.exp <= moment().unix() || !payload.identity ) {
 			control.stop = true;
@@ -51,6 +54,7 @@
 				}));
 			});
 		}
+		
 		
 		
 		let alg = accToken.header.alg, {content, signature} = accToken.raw;
