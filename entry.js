@@ -11,7 +11,7 @@
 	
 	
 	// Initialize runtime environments
-	const http = require( 'servers/http' );
+	const http = require( 'handler/http' );
 	const db   = require( 'lib/mongo' );
 	
 	db.init().then(http.init).then(http.serve)
