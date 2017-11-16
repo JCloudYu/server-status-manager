@@ -1,37 +1,37 @@
 {
-  "name": "server-status-mgr",
-  "version": "0.1.0",
-  "description": "The tiny server package that allows developers to collect multiple server information passively and dhsipath the statuses in a dashboard",
-  "main": "entry.js",
-  "scripts": {
-    "entry": "node entry.js --conf config.json",
-    "entry_sample": "node entry.js --conf config.sample.json",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/JCloudYu/server-status-mgr.git"
-  },
-  "keywords": [
-    "Dashboard",
-    "ServerStatus"
-  ],
-  "author": "JCloudYu",
-  "license": "WTFPL",
-  "bugs": {
-    "url": "https://github.com/JCloudYu/server-status-mgr/issues"
-  },
-  "homepage": "https://github.com/JCloudYu/server-status-mgr#readme",
-  "dependencies": {
-    "app-module-path": "^2.2.0",
-    "colors": "^1.1.2",
-    "json-cfg": "^0.1.4",
-    "lib-jwt": "^0.1.4",
-    "moment": "^2.19.1",
-    "mongodb": "^2.2.33",
-    "pitayajs": "^0.1.4",
-    "python-shell": "^0.4.0",
-    "repl.history": "^0.1.4",
-    "tiinytiny": "^0.1.4"
-  }
+	"name": "server-status-mgr",
+	"version": "0.1.0",
+	"description": "The tiny server package that allows developers to collect multiple server information passively and dhsipath the statuses in a dashboard",
+	"main": "entry.js",
+	"scripts": {
+		"entry": "node entry.js --conf config.json",
+		"entry_sample": "node entry.js --conf config.sample.json",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/JCloudYu/server-status-mgr.git"
+	},
+	"keywords": [
+		"Dashboard",
+		"ServerStatus"
+	],
+	"author": "JCloudYu",
+	"license": "WTFPL",
+	"bugs": {
+		"url": "https://github.com/JCloudYu/server-status-mgr/issues"
+	},
+	"homepage": "https://github.com/JCloudYu/server-status-mgr#readme",
+	"dependencies": {
+		"app-module-path": "^2.2.0",
+		"colors": "^1.1.2",
+		"json-cfg": "^0.1.5",
+		"lib-jwt": "^0.1.4",
+		"moment": "^2.19.2",
+		"mongodb": "^2.2.33",
+		"pitayajs": "^1.2.2",
+		"python-shell": "^0.4.0",
+		"repl.history": "^0.1.4",
+		"tiinytiny": "^0.1.4"
+	}
 }
