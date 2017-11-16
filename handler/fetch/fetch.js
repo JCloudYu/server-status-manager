@@ -4,12 +4,13 @@
 	const http	 = require('http');
 	const fs	 = require('fs');
 	const mongo	 = require('lib/mongo');
+	const config = require('json-cfg').trunk.conf;
 
-	const layout = require('layout');
-    const body	 = require('body');
-	const list	 = require('list');
+	const layout = require('./tmpl/layout');
+    const body	 = require('./tmpl/body');
+	const list	 = require('./tmpl/list');
 
-	const __basePath = global.__basePath || `${__dirname}/../..`;
+	const __basePath = config.env.project_root;
 
 	function __GET_SERVERS_INFO() {
 
@@ -64,7 +65,7 @@
 		res.end();
 	}
 	
-	let fetch = module.exports = (control, result=null)=>{
+	module.exports = (control, chainData)=>{
 	
 		const {request:req, response:res} = control.env;
 

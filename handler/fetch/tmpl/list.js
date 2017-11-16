@@ -1,4 +1,4 @@
-const content = require('list_child');
+const content = require('./list_child');
 
 module.exports = function(params=[]){
     return `

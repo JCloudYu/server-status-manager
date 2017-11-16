@@ -3,7 +3,7 @@
 	
 	const JWT = require( 'lib-jwt' );
 	
-	let fetchTokenHandler = module.exports = (control, result=null)=>{
+	module.exports = (control, chainData)=>{
 	
 	};
 })();
