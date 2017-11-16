@@ -1,11 +1,25 @@
 (()=>{
 	"use strict";
 	
+	const MIME_MAP = {
+		'js':	'application/javascript',
+		'png':	'image/png',
+		'jpg':	'image/jpeg',
+		'jpeg':	'image/jpeg',
+		'tiff':	'image/tiff',
+		'tif':	'image/tiff',
+		'css':	'text/css',
+		'html':	'text/html',
+		'htm':	'text/html',
+		'lic':	'text/plain',
+		'txt':	'text/plain',
+		'json':	'application/json'
+	};
 	const config	 = require( 'json-cfg' ).trunk;
 	const http		 = require( 'http' );
 	const url		 = require( 'url' );
 	const pitaya	 = require( 'pitayajs' );
-	config.conf.http = config.conf.http || {};
+	config.conf.http = config.conf.http || {host:null, port:null, paths:{}};
 	
 	const __handlers = {
 		'': {
@@ -18,9 +32,13 @@
 				require( './handler/fetch' )
 			]})
 		},
-		'resource': pitaya.chain({handler:[
-			require( './handler/resource' )
-		]})
+		'resource': pitaya.chain({
+			handler:[ require( 'pitayajs/helper/http/file-req-handler' ) ],
+			paths:{
+				nginx: config.conf.http.paths.nginx || '/internal-rc',
+				local: config.conf.http.paths.local || './res'
+			}
+		})
 	};
 
 	let __httpServer = http.createServer();
@@ -42,10 +60,10 @@
 						case "res":
 							dispatch = 'resource';
 							
-							// Prevent relative paths (potential security issue)
-							remainder = remainder.replace( /(\/\.\.|\/\.)+/, '' );
 							
-							remainder = `${config.conf.paths.static}${remainder}`;
+							let ext = remainder.lastIndexOf('.');
+							ext = (ext > 0) ? remainder.substring(ext+1) : '';
+							remainder = { path:remainder, contentType:MIME_MAP[ext] || 'application/octet-stream' };
 							break;
 					}
 
@@ -54,8 +72,10 @@
 						dispatcher = (req.method === "POST") ? dispatcher.update : dispatcher.fetch;
 					}
 
+
+					let env = Object.imprintProperties({},{remainder:remainder, request:req, response:res});
 					dispatcher
-					.trigger(Object.imprintProperties({},{remainder:remainder, request:req, response:res}))
+					.trigger(env, remainder)
 					.then(()=>{
 						if (!res.finished) {
 							res.end();

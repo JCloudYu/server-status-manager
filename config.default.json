@@ -1,5 +1,11 @@
 {
-	"http": { "host": "localhost", "port": 8080 },
+	"http": {
+		"host":"localhost", "port":8080,
+		"paths": {
+			"nginx": "/internal-rc",
+			"local": "./res"
+		}
+	},
 	"dbURI": "mongodb://127.0.0.1:27017/r_states",
 	"secret": "L_VoSMQReWqW9zYsyudWT1AZkt2-RQGQIoEqGWcaVgb8l6X25BmSBCMkMh60ERk0nbNg6MQ3OvD4M4h9oqVw3g",
 
