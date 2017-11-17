@@ -16,7 +16,7 @@
 		]
 	});
 	module.exports = (req, res, reqPath)=>{
-		let forwardedURI  = req.headers[ 'X-Forwarded-Uri' ] || req.url;
+		let forwardedURI  = req.headers[ 'x-forwarded-uri' ] || req.url;
 		let proxyRoot = forwardedURI.substring(0, forwardedURI.length - req.url.length);
 	
 		return _chain.trigger({ request:req, response:res, proxyRoot });

@@ -1,22 +1,37 @@
 (()=>{
 	"use strict";
 
-	const mongo	 = require('lib/mongo');
-
-	const layout = require('./tmpl/layout');
-    const body	 = require('./tmpl/body');
-	const list	 = require('./tmpl/list');
-	
+	const mongo	= require( 'lib/mongo' );
+	const tmpl	= require( './tmpl/tmpl' );
 	
 	
 	module.exports = (control, chainData)=>{
-		const {request:req, response:res} = control.env;
+		const {request:req, response:res, proxyRoot} = control.env;
 		
 		return __GET_SERVERS_INFO()
 		.then((value)=>{
-			__WRITE_RESPONSE(res, value);
+			res.writeHead(200, { 'Content-Type': 'text/html' });
+			res.write(tmpl.layout({
+				proxyRoot,
+				content: tmpl.page.dashboard(),
+				init: ''+
+`<script>
+(()=>{
+	"use strict";
+	
+	window.INPUT_DATA = ${JSON.stringify(value)};
+	
+	pipe([
+		'${proxyRoot}/res/js/dashboard.js',
+		()=>{ pump.fire( 'system-ready' ); }
+	]);
+})();
+</script>`
+			}));
 		})
-		.catch((err)=>{console.log(err);});
+		.catch((err)=>{
+			console.log(err);
+		});
 	};
 	
 	
@@ -30,22 +45,5 @@
 			}},
 			{$sort:{init:-1}}
 		]).toArray();
-	}
-	function __WRITE_RESPONSE(res, data) {
-		
-		res.writeHead(200, { 'Content-Type': 'text/html' });
-		res.write(layout({
-			js: [
-				'./res/js/index.js'
-			],
-			css: [
-				'./res/css/bootstrap.min.css',
-				'./res/css/style.css'
-			],
-			body: body([
-				list(data)
-			])
-		}));
-		res.end();
 	}
 })();
