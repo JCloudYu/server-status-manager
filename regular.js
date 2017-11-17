@@ -24,6 +24,7 @@
 	const remoteAddr = updateInfo.remote || 'http://127.0.0.1:8080';
 	const addrInfo	 = url.parse(remoteAddr);
 	const http = require( (addrInfo.protocol === 'https:') ? 'https' : 'http' );
+	const updatePeriod = updateInfo.period || 300;
 	
 	___REGULAR_REPORT();
 	function ___REGULAR_REPORT() {
@@ -51,7 +52,7 @@
 			req.write(JSON.stringify(payload));
 			req.end();
 			
-			setTimeout(___REGULAR_REPORT, 5 * 60 * 1000);
+			setTimeout(___REGULAR_REPORT, updatePeriod * 1000);
 		});
 	}
 })();

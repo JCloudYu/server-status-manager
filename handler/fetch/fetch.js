@@ -43,7 +43,7 @@
 				_id:1, identity:1, time:1,
 				cpu:"$state.cpu", mem:"$state.mem", disk:"$state.disk"
 			}},
-			{$sort:{init:-1}}
+			{ $sort:{ identity:1 }}
 		]).toArray();
 	}
 })();

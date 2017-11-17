@@ -12,13 +12,7 @@
 
 
 	"update": {
-		"remote": "http://127.0.0.1:8080",
-		"identity": "test",
+		"remote": "http://local.elandfintech.com/status/",
 		"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoidXBkYXRlLXRpY2tldCIsImlkZW50aXR5IjoibWFnZ2llIiwiZXhwIjoxOTIwMzcwMDgxfQ.CWlhBxYkUCQW0a41IcY-bz1yxIil6NlNc1Jv9ed-jMU"
-	},
-	"threshold": {
-		"timeSec": 300,
-		"memPercent": 70,
-		"diskPercent": 70
 	}
 }
