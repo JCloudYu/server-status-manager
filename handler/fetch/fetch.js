@@ -9,6 +9,18 @@
 	
 	
 	
+	module.exports = (control, chainData)=>{
+		const {request:req, response:res} = control.env;
+		
+		return __GET_SERVERS_INFO()
+		.then((value)=>{
+			__WRITE_RESPONSE(res, value);
+		})
+		.catch((err)=>{console.log(err);});
+	};
+	
+	
+	
 	function __GET_SERVERS_INFO() {
 		return mongo.inst.collection( 'latest' ).aggregate([
 			{ $match:{}},
@@ -19,7 +31,6 @@
 			{$sort:{init:-1}}
 		]).toArray();
 	}
-
 	function __WRITE_RESPONSE(res, data) {
 		
 		res.writeHead(200, { 'Content-Type': 'text/html' });
@@ -37,14 +48,4 @@
 		}));
 		res.end();
 	}
-	
-	module.exports = (control, chainData)=>{
-		const {request:req, response:res} = control.env;
-		
-		return __GET_SERVERS_INFO()
-		.then((value)=>{
-			__WRITE_RESPONSE(res, value);
-		})
-		.catch((err)=>{console.log(err);});
-	};
 })();
