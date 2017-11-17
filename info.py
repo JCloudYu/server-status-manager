@@ -22,6 +22,8 @@ def gatherInfo():
 	cpuInfo=psutil.cpu_times(True)
 	for cpu in cpuInfo:
 		info['cpu']['times'].append(cpu._asdict())
+	
+	info['cpu']['usage'] = psutil.cpu_percent(interval=1, percpu=True);
 
 	netCounter=psutil.net_io_counters(True);
 	for (key, counter) in netCounter.items():
