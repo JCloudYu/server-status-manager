@@ -19,7 +19,7 @@ $ node regular.js --conf <config-json-file-name>
 ```bash
 $ npm run regular
 ```
-* Run updater (use default.json):
+* Run updater (use config.default.json):
 ```bash
 $ npm run regular_default
 ```
@@ -33,7 +33,7 @@ $ node entry.js --conf <config-json-file-name>
 ```bash
 $ npm run entry
 ```
-* Run management (use default.json):
+* Run management (use config.default.json):
 ```bash
 $ npm run entry_default
 ```
