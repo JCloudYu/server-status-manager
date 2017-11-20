@@ -5,7 +5,8 @@
 	"main": "entry.js",
 	"scripts": {
 		"entry": "node entry.js --conf config.json",
-		"entry_sample": "node entry.js --conf config.sample.json",
+		"entry_default": "node entry.js --conf config.default.json",
+		"regular_default": "node regular.js --conf config.default.json",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"repository": {
@@ -26,10 +27,10 @@
 		"app-module-path": "^2.2.0",
 		"colors": "^1.1.2",
 		"json-cfg": "^0.1.5",
-		"lib-jwt": "^0.1.4",
+		"lib-jwt": "^0.1.5",
 		"moment": "^2.19.2",
 		"mongodb": "^2.2.33",
-		"pitayajs": "^1.2.7",
+		"pitayajs": "^1.2.10",
 		"python-shell": "^0.4.0",
 		"repl.history": "^0.1.4",
 		"tiinytiny": "^0.1.4"
