@@ -6,6 +6,7 @@
 	"scripts": {
 		"entry": "node entry.js --conf config.json",
 		"entry_default": "node entry.js --conf config.default.json",
+		"regular": "node regular.js --conf config.json",
 		"regular_default": "node regular.js --conf config.default.json",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},

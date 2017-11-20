@@ -10,18 +10,32 @@ $ git clone <project-url>
 $ npm install
 ```
 
-## Build and Run
-* Run project (for your own config json file):
+## Update status info to remote
+* Run updater (use your own config json file):
 ```bash
-$ node entry --conf <config-json-file-name>
+$ node regular.js --conf <config-json-file-name>
 ```
-* Run project (for config.json):
+* Run updater (use config.json):
+```bash
+$ npm run regular
+```
+* Run updater (use default.json):
+```bash
+$ npm run regular_default
+```
+
+## Build and Run
+* Run management (use your own config json file):
+```bash
+$ node entry.js --conf <config-json-file-name>
+```
+* Run management (use config.json):
 ```bash
 $ npm run entry
 ```
-* Run project for sample:
+* Run management (use default.json):
 ```bash
-$ npm run entry_sample
+$ npm run entry_default
 ```
 
 ## How to use
